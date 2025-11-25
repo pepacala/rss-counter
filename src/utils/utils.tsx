@@ -1,4 +1,4 @@
-import { config } from "../config/config";
+import { config, RoundedFunctionType } from "../config/config";
 import { getInputBlockCount } from "../modules/rssCounter/utils/utils";
 import { DBdata } from "../services/db";
 
@@ -22,11 +22,15 @@ export function makeMatsLvl7(value: number) {
   );
 }
 
+/** transforms Records and counts value from blocks (formData.blocks),
+ *  based on chosen RSS(formData.name)
+ */
 export function transformRecords(records: DBdata[], RSS_TO_SHOW: string[]) {
   const roundedFunctionsArray = RSS_TO_SHOW.map((el) => {
     return [el, config.form.find((e) => e.name === el)?.roundedFunction];
   });
-  const roundedFunctions = Object.fromEntries(roundedFunctionsArray);
+  const roundedFunctions: { [key: string]: RoundedFunctionType } =
+    Object.fromEntries(roundedFunctionsArray);
 
   return records.map((rec) => {
     const rss = rec.formData.filter((el) => RSS_TO_SHOW.includes(el.name));
