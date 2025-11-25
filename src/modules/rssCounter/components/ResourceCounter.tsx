@@ -1,12 +1,12 @@
 import Display from "./Display";
 import ResourceForm from "./ResourceForm";
 import useFormCounter from "../hooks/useFormCounter";
-import { dbData } from "../../../services/db";
+import { DBdata } from "../../../services/db";
 import { ResourceFormData } from "../../../config/config";
 import ControlPanel from "./ControlPanel";
 
 type Props = {
-  data?: dbData;
+  data?: DBdata;
   onSave?: (formData: ResourceFormData, note: string) => Promise<void>;
 };
 

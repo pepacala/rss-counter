@@ -1,6 +1,6 @@
 import { config } from "../config/config";
 import { getInputBlockCount } from "../modules/rssCounter/utils/utils";
-import { dbData } from "../services/db";
+import { DBdata } from "../services/db";
 
 export function makeDays(value: number) {
   return Math.trunc(value / 24 / 60) + " days";
@@ -22,7 +22,7 @@ export function makeMatsLvl7(value: number) {
   );
 }
 
-export function transformRecords(records: dbData[], RSS_TO_SHOW: string[]) {
+export function transformRecords(records: DBdata[], RSS_TO_SHOW: string[]) {
   const roundedFunctionsArray = RSS_TO_SHOW.map((el) => {
     return [el, config.form.find((e) => e.name === el)?.roundedFunction];
   });

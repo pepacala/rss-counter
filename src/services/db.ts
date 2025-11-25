@@ -2,7 +2,7 @@ import Dexie, { type EntityTable } from "dexie";
 import { ResourceFormData } from "../config/config";
 import data from "../data/data.json";
 
-export interface dbData {
+export interface DBdata {
   id: number;
   time: number; // timeStamp
   formData: ResourceFormData;
@@ -10,7 +10,7 @@ export interface dbData {
 }
 
 const db = new Dexie("ResourceDB") as Dexie & {
-  data: EntityTable<dbData, "id">;
+  data: EntityTable<DBdata, "id">;
 };
 
 // Schema declaration:
